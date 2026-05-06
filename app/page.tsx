@@ -3,10 +3,10 @@ import { useMemo, useState } from 'react';
 
 export default function DirectivosFHCS() {
   const [busqueda, setBusqueda] = useState('');
-  const [directivoSeleccionado, setDirectivoSeleccionado] = useState(null);
+  const [directivoSeleccionado, setDirectivoSeleccionado] = useState<any>(null);
   const [filtroEstado, setFiltroEstado] = useState('Todos');
   const [filtroDependencia, setFiltroDependencia] = useState('Todas');
-  const [directivoAEliminar, setDirectivoAEliminar] = useState(null);
+  const [directivoAEliminar, setDirectivoAEliminar] = useState<any>(null);
 
   const [directivos, setDirectivos] = useState<any[]>([]);
 
