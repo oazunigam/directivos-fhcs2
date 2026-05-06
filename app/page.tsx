@@ -19,7 +19,7 @@ export default function DirectivosFHCS() {
   });
 
   const eliminarDirectivo = (id: number) => {
-    setDirectivos(directivos.filter((d) => d.id !== id));
+    setDirectivos(directivos.filter((d: any) => d.id !== id));
 
     if ((directivoSeleccionado as any)?.id === id) {
       setDirectivoSeleccionado(null);
@@ -55,8 +55,7 @@ export default function DirectivosFHCS() {
       finDate.getFullYear() - inicioDate.getFullYear()
     );
 
-    const directivoExistente = directivos.find(
-      (d) =>
+    const directivoExistente = directivos.find((d: any) =>
         d.nombre === nuevoDirectivo.nombre &&
         d.cargo === nuevoDirectivo.cargo &&
         d.dependencia === nuevoDirectivo.dependencia
@@ -85,12 +84,12 @@ export default function DirectivosFHCS() {
         historialActualizado[historialActualizado.length - 1];
 
       const estadoGeneral = historialActualizado.some(
-        (p) => p.estado === 'Activo'
+        (p: any) => p.estado === 'Activo'
       )
         ? 'Activo'
         : 'Finalizado';
 
-      const directivosActualizados = directivos.map((d) => {
+      const directivosActualizados = directivos.map((d: any) => {
         if (d.id !== directivoExistente.id) return d;
 
         return {
@@ -136,9 +135,9 @@ export default function DirectivosFHCS() {
   };
 
   const estadisticas = useMemo(() => {
-    const activos = directivos.filter((d) => d.estado === 'Activo').length;
+    const activos = directivos.filter((d: any) => d.estado === 'Activo').length;
 
-    const proximos = directivos.filter((d) => {
+    const proximos = directivos.filter((d: any) => {
       const ultimo = d.historial[d.historial.length - 1];
 
       if (!ultimo?.fin) return false;
@@ -147,9 +146,9 @@ export default function DirectivosFHCS() {
       return Number(ultimo.fin) <= actual + 1;
     }).length;
 
-    const dependencias = new Set(directivos.map((d) => d.dependencia)).size;
+    const dependencias = new Set(directivos.map((d: any) => d.dependencia)).size;
 
-    const renovaciones = directivos.filter((d) => d.periodos > 1).length;
+    const renovaciones = directivos.filter((d: any) => d.periodos > 1).length;
 
     return {
       activos,
@@ -159,13 +158,13 @@ export default function DirectivosFHCS() {
     };
   }, [directivos]);
 
-  const nombresRegistrados = [...new Set(directivos.map((d) => d.nombre))];
+  const nombresRegistrados = [...new Set(directivos.map((d: any) => d.nombre))];
 
   const dependenciasRegistradas = [
-    ...new Set(directivos.map((d) => d.dependencia)),
+    ...new Set(directivos.map((d: any) => d.dependencia)),
   ];
 
-  const directivosFiltrados = directivos.filter((d) => {
+  const directivosFiltrados = directivos.filter((d: any) => {
     const texto = `${d.nombre} ${d.cargo} ${d.dependencia}`.toLowerCase();
 
     const coincideBusqueda = texto.includes(busqueda.toLowerCase());
