@@ -8,7 +8,7 @@ export default function DirectivosFHCS() {
   const [filtroDependencia, setFiltroDependencia] = useState('Todas');
   const [directivoAEliminar, setDirectivoAEliminar] = useState(null);
 
-  const [directivos, setDirectivos] = useState([]);
+  const [directivos, setDirectivos] = useState<any[]>([]);
 
   const [nuevoDirectivo, setNuevoDirectivo] = useState({
     nombre: '',
