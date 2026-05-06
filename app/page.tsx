@@ -3,10 +3,10 @@ import { useMemo, useState } from 'react';
 
 export default function DirectivosFHCS() {
   const [busqueda, setBusqueda] = useState('');
-  const [directivoSeleccionado, setDirectivoSeleccionado] = useState<any | null>(null);
+  const [directivoSeleccionado, setDirectivoSeleccionado] = useState<any>(null);
   const [filtroEstado, setFiltroEstado] = useState('Todos');
   const [filtroDependencia, setFiltroDependencia] = useState('Todas');
-  const [directivoAEliminar, setDirectivoAEliminar] = useState<any | null>(null);
+  const [directivoAEliminar, setDirectivoAEliminar] = useState<any>(null);
 
   const [directivos, setDirectivos] = useState<any[]>([]);
 
@@ -381,7 +381,7 @@ export default function DirectivosFHCS() {
               />
 
               <datalist id="directivos-lista">
-                {nombresRegistrados.map((nombre, index) => (
+                {nombresRegistrados.map((nombre: any, index: number) => (
                   <option key={index} value={nombre} />
                 ))}
               </datalist>
@@ -404,7 +404,7 @@ export default function DirectivosFHCS() {
             >
               <option value="Todas">Todas las dependencias</option>
 
-              {dependenciasRegistradas.map((dependencia, index) => (
+              {dependenciasRegistradas.map((dependencia: any, index: number) => (
                 <option key={index} value={dependencia}>
                   {dependencia}
                 </option>
@@ -417,7 +417,7 @@ export default function DirectivosFHCS() {
         <section>
           <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden">
             <div className="divide-y divide-slate-200">
-              {directivosFiltrados.map((directivo) => (
+              {directivosFiltrados.map((directivo: any) => (
                 <div
                   key={directivo.id}
                   className="hover:bg-slate-50 transition"
