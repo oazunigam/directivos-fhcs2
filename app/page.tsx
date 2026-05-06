@@ -73,7 +73,7 @@ export default function DirectivosFHCS() {
 
       const periodosTotales = historialActualizado.length;
 
-      const tiempoTotal = historialActualizado.reduce((acc, periodo) => {
+      const tiempoTotal = historialActualizado.reduce((acc: any, periodo: any) => {
         const inicio = new Date(periodo.inicio).getFullYear();
         const fin = new Date(periodo.fin).getFullYear();
 
@@ -647,7 +647,7 @@ export default function DirectivosFHCS() {
 
                       <tbody>
                         {directivoSeleccionado.historial.map(
-                          (periodo, index) => (
+                          (periodo: any, index: number) => (
                             <tr
                               key={index}
                               className="border-b border-slate-100"
@@ -719,7 +719,7 @@ export default function DirectivosFHCS() {
                   </h3>
 
                   <div className="space-y-6">
-                    {directivoSeleccionado.historial.map((periodo, index) => (
+                    {directivoSeleccionado.historial.map((periodo: any, index: number) => (
                       <div key={index} className="flex gap-5 items-start">
                         <div className="flex flex-col items-center">
                           <div className="w-5 h-5 rounded-full bg-slate-900"></div>
